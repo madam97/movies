@@ -3,7 +3,7 @@ import Header from './pages/Header'
 import Footer from './pages/Footer'
 import Home from './pages/Home'
 import Favourites from './pages/Favourites'
-import MovieOne from './pages/MovieOne'
+import MovieDetailed from './pages/MovieDetailed'
 import ErrorPage from './pages/ErrorPage'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favourites" element={<Favourites />} />
-        <Route path="/movie/:id" element={<MovieOne />} />
+        <Route path="/movies/:id" element={<MovieDetailed />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
