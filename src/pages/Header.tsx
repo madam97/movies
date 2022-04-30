@@ -47,14 +47,14 @@ export default function Header() {
           className="mt-12" 
           title="The Hot stuff" 
           subtitle="Show me the most popular movies" 
-          to="/?list=topRated" 
+          to="/?list=popular" 
           handleClick={toggleModal}
         />
         <HeaderModalNavItem 
           className="mt-3" 
           title="Only the Best" 
           subtitle="Show me the top rated movies" 
-          to="/?list=popular" 
+          to="/?list=topRated" 
           handleClick={toggleModal}
         />
         <HeaderModalNavItem 
