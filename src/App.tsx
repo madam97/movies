@@ -7,7 +7,7 @@ import ErrorPage from "./pages/ErrorPage"
 
 function App() {
   return (
-    <div className="font-body">
+    <div className="bg-shade text-mid text-sm font-body">
       <Header />
 
       <Routes>
