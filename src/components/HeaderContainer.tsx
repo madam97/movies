@@ -8,7 +8,7 @@ type HeaderContainerProps = {
 export default function HeaderContainer({ children }: HeaderContainerProps) {
   
   /** @const {boolean} stucked If true, the header will have white background */
-  const [stucked, setStucked] = useState<boolean>(false);
+  const [stucked, setStucked] = useState<boolean>(window.scrollY !== 0);
 
   /**
    * Sets the stucked state to true if csrolled on website, otherwise it will be false
