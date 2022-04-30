@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import Header from "./pages/Header"
 import Home from "./pages/Home"
-import Favorites from "./pages/Favorites"
+import Favourites from "./pages/Favourites"
 import MovieOne from "./pages/MovieOne"
 import ErrorPage from "./pages/ErrorPage"
 
@@ -12,7 +12,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favourites" element={<Favourites />} />
         <Route path="/movie/:id" element={<MovieOne />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
