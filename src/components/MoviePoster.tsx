@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 import IMoviePoster from '../interfaces/IMoviePoster'
 import Image from './Image'
-import { Link } from 'react-router-dom'
+import MovieCard from './MovieCard'
 
 type MoviePosterProps = {
+  /** The movie's poster data that will be displayed */
   poster: IMoviePoster
 }
 
@@ -15,20 +15,7 @@ export default function MoviePoster({ poster }: MoviePosterProps) {
         <Image src={poster.posterPath} alt={poster.title} />
       </Link>
 
-      <div className="p-3 border border-light rounded-b-lg">
-        <p className="mb-5 text-dark font-semibold">{poster.title}</p>
-
-        <div className="flex justify-between font-medium">
-          <span>
-            <FontAwesomeIcon className="mr-1" icon={faStar} />
-            {poster.voteAverage}
-          </span>
-
-          <Link to={`/movies/${poster.id}`}>
-            <FontAwesomeIcon icon={faChevronRight} />
-          </Link>
-        </div>
-      </div>
+      <MovieCard movie={poster} />
     </article>
   )
 }
