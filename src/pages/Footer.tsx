@@ -4,11 +4,16 @@ import FooterNavItem from '../components/FooterNavItem'
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
+type FooterProps = {
+  /** If false, the footer won't appear */
+  show?: boolean
+}
+
 /**
  * The component of the footer
  * @returns {JSX.Element}
  */
-export default function Footer() {
+export default function Footer({ show = true } : FooterProps) {
 
   /** @const {string} activeUrl The active url */
   const [activeUrl, setActiveUrl] = useState<string>('/'); 
@@ -23,7 +28,7 @@ export default function Footer() {
   // -----------------------------------------
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-white text-dark">
+    <footer className={`${!show ? 'hidden' : ''} fixed bottom-0 left-0 right-0 bg-white text-dark`}>
       <nav>
         <ul className="flex justify-around">
           <li>
