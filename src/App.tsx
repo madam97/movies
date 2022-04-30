@@ -1,9 +1,10 @@
-import { Route, Routes } from "react-router-dom"
-import Header from "./pages/Header"
-import Home from "./pages/Home"
-import Favourites from "./pages/Favourites"
-import MovieOne from "./pages/MovieOne"
-import ErrorPage from "./pages/ErrorPage"
+import { Route, Routes } from 'react-router-dom'
+import Header from './pages/Header'
+import Footer from './pages/Footer'
+import Home from './pages/Home'
+import Favourites from './pages/Favourites'
+import MovieOne from './pages/MovieOne'
+import ErrorPage from './pages/ErrorPage'
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path="/movie/:id" element={<MovieOne />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+
+      <Footer />
     </div>
   )
 }
