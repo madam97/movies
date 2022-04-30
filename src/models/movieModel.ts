@@ -31,14 +31,14 @@ const getPosterFromMovie = (movie: IObject): IMoviePoster | null => {
  * @returns {IMovie | null}
  */
 const getMovieData = (movie: IObject): IMovie | null => {
-  if (movie.id && movie.title) {
+  const poster = getPosterFromMovie(movie);
+
+  if (poster) {
     return {
-      id: movie.id,
-      title: movie.title,
+      ...poster,
       originalTitle: movie.original_title ?? '',
       tagline: movie.tagline ?? '',
       backdropPath: movie.backdrop_path ? IMG_BASE_PATH+movie.backdrop_path : null,
-      voteAverage: movie.vote_average ?? 0,
       overview: movie.overview ?? ''
     }
   } else {

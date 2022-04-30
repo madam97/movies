@@ -1,10 +1,9 @@
-interface IMovie {
-  id: number,
-  title: string,
+import IMoviePoster from './IMoviePoster'
+
+interface IMovie extends IMoviePoster {
   originalTitle: string,
   tagline: string,
   backdropPath: string | null,
-  voteAverage: number,
   overview: number
 }
 
