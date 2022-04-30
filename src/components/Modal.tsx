@@ -25,7 +25,7 @@ export default function Modal({ title, show, setShow, children }: ModalProps) {
   // --------------------------------------------
 
   return (
-    <div className={`z-50 fixed inset-0 ${show ? 'flex' : 'hidden'} items-center justify-center p-4`}>
+    <div className={`z-40 fixed inset-0 ${show ? 'flex' : 'hidden'} items-center justify-center p-4`}>
       <div className="cursor-pointer fixed inset-0 bg-dark bg-opacity-70" onClick={close}></div>
 
       <div className="relative w-full px-3.5 py-6 rounded-xl bg-white">

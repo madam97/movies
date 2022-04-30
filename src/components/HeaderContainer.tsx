@@ -28,7 +28,7 @@ export default function HeaderContainer({ children }: HeaderContainerProps) {
   // --------------------------------------------
 
   return (
-    <header className={`z-40 fixed top-0 left-0 right-0 flex px-4 py-2 ${stucked ? 'bg-white' : ''} text-base text-dark`}>
+    <header className={`z-30 fixed top-0 left-0 right-0 flex px-4 py-2 ${stucked ? 'bg-white' : ''} text-base text-dark`}>
       {children}
     </header>
   )

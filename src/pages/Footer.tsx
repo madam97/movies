@@ -28,7 +28,7 @@ export default function Footer({ show = true } : FooterProps) {
   // -----------------------------------------
 
   return (
-    <footer className={`${!show ? 'hidden' : ''} fixed bottom-0 left-0 right-0 bg-white text-dark`}>
+    <footer className={`${!show ? 'hidden' : ''} z-30 fixed bottom-0 left-0 right-0 bg-white text-dark`}>
       <nav>
         <ul className="flex justify-around">
           <li>
