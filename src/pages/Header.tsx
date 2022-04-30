@@ -5,6 +5,7 @@ import { faSliders } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
 import Modal from '../components/Modal'
 import HeaderModalNavItem from '../components/HeaderModalNavItem'
+import HeaderContainer from '../components/HeaderContainer'
 
 /**
  * The component of the header
@@ -29,16 +30,16 @@ export default function Header() {
   // --------------------------------------------
 
   return (
-    <header className="z-40 fixed top-0 left-0 right-0 flex px-4 py-2 bg-white text-base text-dark">
+    <HeaderContainer>
       <Link className="mr-auto font-semibold" to="/">
         MovieDB
       </Link>
 
-      <Link className="mr-4" to="/favorites">
+      <Link className="flex items-center mr-4" to="/favorites">
         <FontAwesomeIcon icon={faStar} />
       </Link>
 
-      <button onClick={toggleModal}>
+      <button className="flex items-center" onClick={toggleModal}>
         <FontAwesomeIcon icon={faSliders} />
       </button>
 
@@ -65,6 +66,6 @@ export default function Header() {
           handleClick={toggleModal}
         />
       </Modal>
-    </header>
+    </HeaderContainer>
   )
 }
