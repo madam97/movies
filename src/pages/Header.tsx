@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
-    <header className="flex px-4 py-2">
+    <header className="fixed top-0 left-0 right-0 flex px-4 py-2 bg-white text-base text-dark">
       <Link className="mr-auto font-semibold" to="/">
         MovieDB
       </Link>
