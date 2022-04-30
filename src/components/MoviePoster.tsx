@@ -15,10 +15,10 @@ export default function MoviePoster({ poster }: MoviePosterProps) {
         <Image src={poster.posterPath} alt={poster.title} />
       </Link>
 
-      <div className="p-3 border border-light rounded-bl-lg rounded-br-lg">
+      <div className="p-3 border border-light rounded-b-lg">
         <p className="mb-5 text-dark font-semibold">{poster.title}</p>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between font-medium">
           <span>
             <FontAwesomeIcon className="mr-1" icon={faStar} />
             {poster.voteAverage}
