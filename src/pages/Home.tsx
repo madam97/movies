@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import MoviePoster from '../components/MoviePoster';
+import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../hooks/useRedux'
 import { getPopularMovies, getTopRatedMovies, selectPosters } from '../store/slices/movieSlice'
+import MovieList from '../components/MovieList'
 
 /**
  * The component of the Home page
@@ -31,15 +31,10 @@ export default function Home() {
   // -----------------------------------------
 
   return (
-    <main>
-      <section className="px-4 pt-14 pb-6 bg-white">
-        <h1 className="mb-1.5 text-2xl text-dark font-extrabold">Hello Verycreatives</h1>
-        <p className="pl-4 font-semibold">Check these movies out</p>
-      </section>
-
-      <section className="grid gap-x-1 gap-y-2 grid-cols-2 px-2 py-3">
-        {posters.map(poster => <MoviePoster key={poster.id} poster={poster} />)}
-      </section>
-    </main>
+    <MovieList 
+      displayType="poster" 
+      movies={posters}
+      noDataText="There are no movies to display..."
+    />
   )
 }
