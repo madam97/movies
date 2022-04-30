@@ -35,7 +35,7 @@ export default function Header() {
         MovieDB
       </Link>
 
-      <Link className="flex items-center mr-4" to="/favorites">
+      <Link className="flex items-center mr-4" to="/favourites">
         <FontAwesomeIcon icon={faStar} />
       </Link>
 
