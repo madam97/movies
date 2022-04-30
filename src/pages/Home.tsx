@@ -3,12 +3,16 @@ import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../hooks/useRedux'
 import { getPopularMovies, getTopRatedMovies, selectPosters } from '../store/slices/movieSlice'
 import MovieList from '../components/MovieList'
+import IMoviePoster from '../interfaces/IMoviePoster'
 
 /**
  * The component of the Home page
  * @returns {JSX.Element}
  */
 export default function Home() {
+
+  /** @const {IMoviePoster[] | null} posters The movie posters that will be displayed */
+  let posters: IMoviePoster[] | null = null; 
 
   /** Fetches the top rated or popular movies */
   const [searchParams] = useSearchParams();
@@ -25,15 +29,14 @@ export default function Home() {
     }
   }, [searchParams]);
 
-  /** @const {IMoviePoster[]} posters The movie posters that will be displayed */
-  const posters = useAppSelector(selectPosters);
+  posters = useAppSelector(selectPosters);
 
   // -----------------------------------------
 
   return (
     <MovieList 
       displayType="poster" 
-      movies={posters}
+      movies={posters ?? []}
       noDataText="There are no movies to display..."
     />
   )

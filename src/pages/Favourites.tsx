@@ -1,6 +1,7 @@
 import { useAppSelector } from '../hooks/useRedux'
 import { selectFavMovies } from '../store/slices/movieSlice'
 import MovieList from '../components/MovieList'
+import IMovie from '../interfaces/IMovie';
 
 /**
  * The component of the Favourite movies page
@@ -8,8 +9,10 @@ import MovieList from '../components/MovieList'
  */
 export default function Favourites() {
 
-  /** @const {IMovie[]} movies The favourite movies that will be displayed */
-  const movies = useAppSelector(selectFavMovies);
+  /** @const {IMovie[] | null} movies The favourite movies that will be displayed */
+  let movies: IMovie[] | null = null;
+
+  movies = useAppSelector(selectFavMovies);
 
   // -----------------------------------------
 
