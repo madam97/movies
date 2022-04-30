@@ -15,6 +15,7 @@ const movieSlice = createSlice({
   initialState,
   reducers: {
     getTopRatedMovies() {},
+    getPopularMovies() {},
 
     setPosters(state: IMovieState, action: PayloadAction<IMoviePoster[]>) {
       const posters = action.payload;
@@ -26,7 +27,7 @@ const movieSlice = createSlice({
   }
 });
 
-export const { getTopRatedMovies, setPosters } = movieSlice.actions;
+export const { getTopRatedMovies, getPopularMovies, setPosters } = movieSlice.actions;
 
 export const selectPosters = (state: TRootState) => state.movie.posters;
 
