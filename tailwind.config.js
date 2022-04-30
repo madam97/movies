@@ -13,11 +13,14 @@ module.exports = {
     fontFamily: {
       'body': ['Lato', 'sans-serif']
     },
-    fontSize: {
-      '2xs': '0.625rem'
-    },
-    minHeight: {
-      '60': '15rem'
+    
+    extend: {
+      fontSize: {
+        '2xs': '0.625rem'
+      },
+      minHeight: {
+        '60': '15rem'
+      }
     }
   },
   plugins: [],
