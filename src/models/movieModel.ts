@@ -39,7 +39,9 @@ const getMovieData = (movie: IObject): IMovie | null => {
       originalTitle: movie.original_title ?? '',
       tagline: movie.tagline ?? '',
       backdropPath: movie.backdrop_path ? IMG_BASE_PATH+movie.backdrop_path : null,
-      overview: movie.overview ?? ''
+      overview: movie.overview ?? '',
+      status: movie.status ?? 'unknown',
+      runtime: movie.runtime ?? 0
     }
   } else {
     return null;
