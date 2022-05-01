@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart as faHeartSolid, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as faHeartSolid, faStar, faClock, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
 import { useAppDispatch, useAppSelector } from '../hooks/useRedux'
-import { addFavMovie, getMovieDetailed, isFavMovie, removeFavMovie, selectMovieDetailed, selectStatus } from '../store/slices/movieSlice'
+import { addFavMovie, getMovieDetailed, isFavMovie, removeFavMovie, selectMovieDetailed, selectStatus, setMovieDetailed } from '../store/slices/movieSlice'
 import GoBackNav from '../components/GoBackNav';
 import Picture from '../components/Picture';
 import ErrorSection from '../components/ErrorSection';
@@ -16,6 +16,13 @@ export default function MovieDetailed() {
   const movieId = id ? parseInt(id) : -1;
 
   const dispatch = useAppDispatch();
+
+  /** Removes the movie after unmount */
+  useEffect(() => {
+    return () => {
+      dispatch(setMovieDetailed(null));
+    }
+  }, []);
 
   /** Loads the movie */
   useEffect(() => {
@@ -99,10 +106,22 @@ export default function MovieDetailed() {
             {movie.tagline && <h2 className="text-md text-dark font-semibold">{movie.tagline}</h2>}
 
             <div className="mt-3 mb-8 text-xs font-medium">
-              <span>
+              <span className="mr-4">
+                <FontAwesomeIcon className="mr-1" icon={faCheck} />
+                {movie.status}
+              </span>
+
+              <span className="mr-4">
                 <FontAwesomeIcon className="mr-1" icon={faStar} />
                 {movie.voteAverage}
               </span>
+
+              {movie.runtime && 
+                <span className="mr-4">
+                  <FontAwesomeIcon className="mr-1" icon={faClock} />
+                  {movie.runtime} min
+                </span>
+              }
             </div>
 
             <p className="text-sm text-dark">{movie.overview}</p>
