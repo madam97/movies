@@ -35,7 +35,7 @@ export default function MovieList({ displayType, movies, noDataText }: MovieList
 
       <section className="px-4 pt-14 pb-6 bg-white">
         <div className="container">
-          <h1 className="mb-1.5 text-2xl text-dark font-extrabold">Hello Verycreatives</h1>
+          <h1 className="laptop:mt-7 mb-1.5 text-2xl text-dark font-extrabold">Hello Verycreatives</h1>
           <p className="font-semibold">Check these movies out</p>
         </div>
       </section>
