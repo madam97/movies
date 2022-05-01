@@ -14,7 +14,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
     <div className="flex flex-col justify-between grow p-3 border border-light rounded-b-lg">
       <p className="mb-5 text-dark font-semibold">{movie.title}</p>
 
-      <div className="flex justify-between font-medium">
+      <div className="flex justify-between text-xs font-medium">
         <span>
           <FontAwesomeIcon className="mr-1" icon={faStar} />
           {movie.voteAverage}
