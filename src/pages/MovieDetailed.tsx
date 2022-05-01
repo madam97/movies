@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft, faHeart as faHeartSolid, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as faHeartSolid, faStar } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
 import { useAppDispatch, useAppSelector } from '../hooks/useRedux'
-import { addFavMovie, getMovieDetailed, isFavMovie, removeFavMovie, selectMovieDetailed } from '../store/slices/movieSlice';
-import Image from '../components/Image';
-import HeaderContainer from '../components/HeaderContainer';
+import { addFavMovie, getMovieDetailed, isFavMovie, removeFavMovie, selectMovieDetailed } from '../store/slices/movieSlice'
+import Image from '../components/Image'
+import GoBackNav from '../components/GoBackNav';
 
 export default function MovieDetailed() {
-
-  const navigate = useNavigate();
 
   const { id } = useParams();
   const movieId = id ? parseInt(id) : -1;
@@ -50,57 +48,47 @@ export default function MovieDetailed() {
   // -----------------------------------------
 
   return (
-    <>
-      <HeaderContainer>
-        <button className="flex items-center mr-2.5" onClick={() => navigate(-1)}>
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-
-        <span className="mr-auto font-bold">
-          Movie Details
-        </span>
-
+    <main className="min-h-screen bg-white">
+      <GoBackNav title="Movie Details">
         {favorite && 
-          <button className="flex items-center" onClick={e => toggleFavorite(e, false)}>
+          <button className="flex items-center ml-auto" onClick={e => toggleFavorite(e, false)}>
             <FontAwesomeIcon icon={faHeartSolid} />
           </button>
         }
         {!favorite && 
-          <button className="flex items-center" onClick={e => toggleFavorite(e, true)}>
+          <button className="flex items-center ml-auto" onClick={e => toggleFavorite(e, true)}>
             <FontAwesomeIcon icon={faHeartRegular} />
           </button>
         }
-      </HeaderContainer>
+      </GoBackNav>
 
-      <main className="min-h-screen bg-white">
-        {movie && 
-          <section>
-            <Image src={movie.backdropPath} alt={movie.title} />
+      {movie && 
+        <section>
+          <Image src={movie.backdropPath} alt={movie.title} />
 
-            <div className="relative 
-              -mt-3 tablet:-mt-12 laptop:-mt-20 desktop:-mt-28 mx-auto 
-              px-4 pt-6 pb-4.5 
-              tablet:max-w-lg laptop:max-w-2xl desktop:max-w-3xl 
-              bg-white rounded-t-xl
-            ">
-              <h1 className="text-2xl text-dark font-extrabold">
-                {movie.title}
-                {movie.originalTitle && movie.title !== movie.originalTitle ? ' ('+movie.originalTitle+')' : ''}
-              </h1>
-              {movie.tagline && <h2 className="text-md text-dark font-semibold">{movie.tagline}</h2>}
+          <div className="relative 
+            -mt-3 tablet:-mt-12 laptop:-mt-20 desktop:-mt-28 mx-auto 
+            px-4 pt-6 pb-4.5 
+            tablet:max-w-lg laptop:max-w-2xl desktop:max-w-3xl 
+            bg-white rounded-t-xl
+          ">
+            <h1 className="text-2xl text-dark font-extrabold">
+              {movie.title}
+              {movie.originalTitle && movie.title !== movie.originalTitle ? ' ('+movie.originalTitle+')' : ''}
+            </h1>
+            {movie.tagline && <h2 className="text-md text-dark font-semibold">{movie.tagline}</h2>}
 
-              <div className="mt-3 mb-8 text-xs font-medium">
-                <span>
-                  <FontAwesomeIcon className="mr-1" icon={faStar} />
-                  {movie.voteAverage}
-                </span>
-              </div>
-
-              <p className="text-sm text-dark">{movie.overview}</p>
+            <div className="mt-3 mb-8 text-xs font-medium">
+              <span>
+                <FontAwesomeIcon className="mr-1" icon={faStar} />
+                {movie.voteAverage}
+              </span>
             </div>
-          </section>
-        }
-      </main>
-    </>
+
+            <p className="text-sm text-dark">{movie.overview}</p>
+          </div>
+        </section>
+      }
+    </main>
   )
 }

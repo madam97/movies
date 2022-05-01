@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="bg-shade text-mid text-sm font-body">
-      {!detailedView && <Header />}
+      <Header showOnMobileAndTablet={!detailedView} />
 
       <Routes>
         <Route path="/" element={<Home />} />
