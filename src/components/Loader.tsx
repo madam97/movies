@@ -1,12 +1,16 @@
 import { ReactComponent as Logo } from '../assets/images/logo.svg';
+import { useAppSelector } from '../hooks/useRedux';
+import { selectStatus } from '../store/slices/movieSlice';
 
-type LoaderProps = {
-  show: boolean
-}
+export default function Loader() {
+  
+  /** @const {TLoadingStatus} movieLoadingStatus The status of movie slice's loading */
+  const movieLoadingStatus = useAppSelector(selectStatus);
 
-export default function Loader({ show }: LoaderProps) {
+  // -----------------------------------------
+
   return (
-    <div className={`${!show ? 'hidden' : ''}  z-50 fixed inset-0 flex justify-center items-center bg-dark`}>
+    <div className={`${!(movieLoadingStatus == 'idle' || movieLoadingStatus == 'loading') ? 'hidden' : ''}  z-50 fixed inset-0 flex justify-center items-center bg-dark`}>
       <Logo />
     </div>
   )
