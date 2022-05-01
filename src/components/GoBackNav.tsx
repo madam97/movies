@@ -20,7 +20,7 @@ export default function GoBackNav({ title, children }: GoBackNavProps) {
       <nav className="flex container py-2">
         <button className="flex items-center mr-2.5" onClick={() => navigate(-1)}>
           <FontAwesomeIcon icon={faChevronLeft} />
-          <span className="hidden laptop:inline ml-1 font-bold">Go back</span>
+          <span className="hidden laptop:inline ml-1 font-bold leading-none">Go back</span>
         </button>
 
         <span className="laptop:hidden font-bold">{title}</span>
