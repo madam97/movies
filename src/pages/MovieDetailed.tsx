@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/useRedux'
 import { addFavMovie, getMovieDetailed, isFavMovie, removeFavMovie, selectMovieDetailed } from '../store/slices/movieSlice'
 import Image from '../components/Image'
 import GoBackNav from '../components/GoBackNav';
+import Picture from '../components/Picture';
 
 export default function MovieDetailed() {
 
@@ -64,7 +65,16 @@ export default function MovieDetailed() {
 
       {movie && 
         <section>
-          <Image src={movie.backdropPath} alt={movie.title} />
+          <Picture
+            src={movie.backdropPath} 
+            alt={movie.title} 
+            sizes={{
+              desktop: 'original',
+              laptop: 'w1280',
+              tablet: 'w780',
+            }}
+            defSize={'w500'}
+          />
 
           <div className="relative 
             -mt-3 tablet:-mt-12 laptop:-mt-20 desktop:-mt-28 mx-auto 

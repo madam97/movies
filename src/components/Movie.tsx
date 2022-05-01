@@ -14,7 +14,7 @@ export default function Movie({ className = '', movie }: MovieProps) {
   return (
     <article className={`overflow-hidden rounded-lg ${className}`}>
       <Link to={`/movies/${movie.id}`}>
-        <Image src={movie.backdropPath} alt={movie.title} />
+        <Image src={movie.backdropPath} alt={movie.title} size="w500" />
       </Link>
 
       <MovieCard movie={movie} />
