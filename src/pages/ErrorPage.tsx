@@ -1,21 +1,9 @@
-import { useNavigate } from 'react-router-dom'
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ErrorSection from '../components/ErrorSection';
 
 export default function ErrorPage() {
-
-  const navigate = useNavigate();
-
-  // -----------------------------------------
-
   return (
-    <main className="flex flex-col justify-center items-center min-h-screen">
-      <h1 className="mb-4 text-6xl text-dark font-extrabold">404</h1>
-      <p className="mb-12 text-base">Ooops, something went wrong...</p>
-      <button className="flex items-center p-3 bg-dark rounded-xl text-white font-semibold leading-none" onClick={e => navigate(-1)}>
-        <FontAwesomeIcon className="mr-2.5" icon={faChevronLeft} /> 
-        <span>Go back</span>
-      </button>
+    <main>
+      <ErrorSection title="Ooops, something went wrong..." />
     </main>
   )
 }
