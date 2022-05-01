@@ -9,10 +9,8 @@ import IMovie from '../interfaces/IMovie';
  */
 export default function Favourites() {
 
-  /** @const {IMovie[] | null} movies The favourite movies that will be displayed */
-  let movies: IMovie[] | null = null;
-
-  movies = useAppSelector(selectFavMovies);
+  /** @const {IMovie[]} movies The favourite movies that will be displayed */
+  const movies: IMovie[] = useAppSelector(selectFavMovies);
 
   // -----------------------------------------
 

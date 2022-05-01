@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import IMovie from '../interfaces/IMovie'
 import IMoviePoster from '../interfaces/IMoviePoster'
 import Loader from './Loader'
@@ -15,23 +14,9 @@ type MovieListProps = {
 }
 
 export default function MovieList({ displayType, movies, noDataText }: MovieListProps) {
-
-  /** @const {show} show If true, the loader will shown */
-  const [show, setShow] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (movies !== null) {
-      setTimeout(() => {
-        setShow(false);
-      }, 1000);
-    }
-  }, [movies]);
-
-  // --------------------------------------------
-
   return (
     <main className="flex flex-col min-h-screen">
-      <Loader show={show} />
+      <Loader />
 
       <section className="px-4 pt-14 pb-6 bg-white">
         <div className="container">

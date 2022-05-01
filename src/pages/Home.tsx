@@ -11,9 +11,6 @@ import IMoviePoster from '../interfaces/IMoviePoster'
  */
 export default function Home() {
 
-  /** @const {IMoviePoster[] | null} posters The movie posters that will be displayed */
-  let posters: IMoviePoster[] | null = null; 
-
   /** Fetches the top rated or popular movies */
   const [searchParams] = useSearchParams();
 
@@ -29,7 +26,8 @@ export default function Home() {
     }
   }, [searchParams]);
 
-  posters = useAppSelector(selectPosters);
+  /** @const {IMoviePoster[]} posters The movie posters that will be displayed */
+  const posters: IMoviePoster[] = useAppSelector(selectPosters);
 
   // -----------------------------------------
 

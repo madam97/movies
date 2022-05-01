@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart as faHeartSolid, faStar } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
 import { useAppDispatch, useAppSelector } from '../hooks/useRedux'
-import { addFavMovie, getMovieDetailed, isFavMovie, removeFavMovie, selectMovieDetailed } from '../store/slices/movieSlice'
-import Image from '../components/Image'
+import { addFavMovie, getMovieDetailed, isFavMovie, removeFavMovie, selectMovieDetailed, selectStatus } from '../store/slices/movieSlice'
 import GoBackNav from '../components/GoBackNav';
 import Picture from '../components/Picture';
+import ErrorSection from '../components/ErrorSection';
+import Loader from '../components/Loader';
 
 export default function MovieDetailed() {
 
@@ -22,6 +23,9 @@ export default function MovieDetailed() {
       dispatch(getMovieDetailed(movieId));
     }
   }, [id]);
+  
+  /** @const {TLoadingStatus} movieLoadingStatus The status of movie slice's loading */
+  const movieLoadingStatus = useAppSelector(selectStatus);
 
   /** @const {IMovie} movie The movie, its data will appears */
   const movie = useAppSelector(selectMovieDetailed);
@@ -50,6 +54,8 @@ export default function MovieDetailed() {
 
   return (
     <main className="min-h-screen bg-white">
+      <Loader />
+
       <span className="absolute top-0 inset-x-0 block h-20 laptop:h-40 bg-gradient-to-b from-white/75 to-transparent"></span>
 
       <GoBackNav title="Movie Details">
@@ -65,7 +71,9 @@ export default function MovieDetailed() {
         }
       </GoBackNav>
 
-      {movie && 
+      {(movieLoadingStatus == 'error' || movieLoadingStatus == 'success' && !movie) && <ErrorSection title="Movie was not found" />}
+
+      {movieLoadingStatus != 'error' && movie && 
         <section>
           <Picture
             src={movie.backdropPath} 
