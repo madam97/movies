@@ -1,15 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import IMovie from '../../interfaces/IMovie'
 import IMoviePoster from '../../interfaces/IMoviePoster'
+import TLoadingStatus from '../../types/TLoadingStatus'
 import { TRootState } from '../configureStore'
 
 interface IMovieState {
+  status: TLoadingStatus
   posters: IMoviePoster[],
   movieDetailed: IMovie | null,
   favMovies: IMovie[]
 }
 
 const initialState: IMovieState = {
+  status: 'idle',
   posters: [],
   movieDetailed: null,
   favMovies: []
@@ -22,6 +25,14 @@ const movieSlice = createSlice({
     getTopRatedMovies() {},
     getPopularMovies() {},
     getMovieDetailed(state: IMovieState, action: PayloadAction<number>) {},
+
+    setStatus(state: IMovieState, action: PayloadAction<TLoadingStatus>) {
+      const status = action.payload;
+      return {
+        ...state,
+        status
+      }
+    },
 
     setPosters(state: IMovieState, action: PayloadAction<IMoviePoster[]>) {
       const posters = action.payload;
@@ -77,8 +88,9 @@ const movieSlice = createSlice({
   }
 });
 
-export const { getTopRatedMovies, getPopularMovies, getMovieDetailed, setPosters, setMovieDetailed, addFavMovie, removeFavMovie } = movieSlice.actions;
+export const { getTopRatedMovies, getPopularMovies, getMovieDetailed, setStatus, setPosters, setMovieDetailed, addFavMovie, removeFavMovie } = movieSlice.actions;
 
+export const selectStatus = (state: TRootState) => state.movie.status;
 export const selectPosters = (state: TRootState) => state.movie.posters;
 export const selectMovieDetailed = (state: TRootState) => state.movie.movieDetailed;
 export const selectFavMovies = (state: TRootState) => state.movie.favMovies;

@@ -1,7 +1,7 @@
 import { call, put, SagaReturnType } from '@redux-saga/core/effects'
 import { PayloadAction } from '@reduxjs/toolkit';
 import { requestGetMovieDetailed, requestGetPopularMovies, requestGetTopRatedMovies } from '../../models/movieModel'
-import { setMovieDetailed, setPosters } from '../slices/movieSlice'
+import { setMovieDetailed, setPosters, setStatus } from '../slices/movieSlice'
 
 type TRequestGetTopRatedMovies = SagaReturnType<typeof requestGetTopRatedMovies>;
 type TRequestGetPopularMovies = SagaReturnType<typeof requestGetPopularMovies>;
@@ -12,11 +12,16 @@ type TRequestGetMovieDetailed = SagaReturnType<typeof requestGetMovieDetailed>;
  */
 export function* handleGetTopRatedMovies() {
   try {
+    yield put(setStatus('loading'));
+
     const posters: TRequestGetTopRatedMovies = yield call(requestGetTopRatedMovies);
 
     yield put(setPosters(posters));
+    yield put(setStatus('success'));
   } catch(err) {
     console.log(err);
+    yield put(setPosters([]));
+    yield put(setStatus('error'));
   }
 }
 
@@ -25,11 +30,16 @@ export function* handleGetTopRatedMovies() {
  */
 export function* handleGetPopularMovies() {
   try {
+    yield put(setStatus('loading'));
+
     const posters: TRequestGetPopularMovies = yield call(requestGetPopularMovies);
 
     yield put(setPosters(posters));
+    yield put(setStatus('success'));
   } catch(err) {
     console.log(err);
+    yield put(setPosters([]));
+    yield put(setStatus('error'));
   }
 }
 
@@ -39,10 +49,15 @@ export function* handleGetPopularMovies() {
  */
 export function* handleGetMovieDetailed(action: PayloadAction<number>) {
   try {
+    yield put(setStatus('loading'));
+
     const movie: TRequestGetMovieDetailed = yield call(requestGetMovieDetailed, action.payload);
 
     yield put(setMovieDetailed(movie));
+    yield put(setStatus('success')); 
   } catch(err) {
     console.log(err);
+    yield put(setMovieDetailed(null));
+    yield put(setStatus('error'));
   }
 }
