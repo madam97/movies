@@ -2,9 +2,13 @@ import { defBreakpoints } from '../config'
 import TBreakpoint from '../types/TBreakpoint'
 
 type PictureProps = {
+  /** The image's source file path */
   src: string | null,
+  /** The alt and title value of the img element */
   alt: string,
+  /** Possible sizes depending on the given breakpoints */
   sizes: Record<TBreakpoint, string>,
+  /** Default and on mobile device size */
   defSize: string
 }
 

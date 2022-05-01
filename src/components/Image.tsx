@@ -1,6 +1,9 @@
 type ImageProps = {
+  /** The image's source file path */
   src: string | null,
+  /** The alt and title value of the img element */
   alt: string,
+  /** The size of the image */
   size: string
 }
 
