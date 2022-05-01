@@ -2,6 +2,8 @@ import { defBreakpoints } from '../config'
 import TBreakpoint from '../types/TBreakpoint'
 
 type PictureProps = {
+  /** More classes for the root element */
+  className?: string,
   /** The image's source file path */
   src: string | null,
   /** The alt and title value of the img element */
@@ -12,7 +14,7 @@ type PictureProps = {
   defSize: string
 }
 
-export default function Picture({ src, alt, sizes, defSize }: PictureProps) {
+export default function Picture({ className, src, alt, sizes, defSize }: PictureProps) {
 
   const sources: JSX.Element[] = [];
   if (src) {
@@ -30,7 +32,7 @@ export default function Picture({ src, alt, sizes, defSize }: PictureProps) {
   }
 
   return (
-    <div className="flex min-h-60 bg-light">
+    <div className={`flex min-h-60 bg-light ${className}`}>
       {src && sources.length > 0 &&
         <picture className="w-full">
           {sources}
