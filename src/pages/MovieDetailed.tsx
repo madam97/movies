@@ -83,6 +83,7 @@ export default function MovieDetailed() {
       {movieLoadingStatus != 'error' && movie && 
         <section>
           <Picture
+            className="max-h-140"
             src={movie.backdropPath} 
             alt={movie.title} 
             sizes={{

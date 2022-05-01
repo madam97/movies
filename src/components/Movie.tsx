@@ -15,6 +15,7 @@ export default function Movie({ wide, movie }: MovieProps) {
     <article className={`overflow-hidden rounded-lg ${wide ? 'tablet:col-span-2' : ''}`}>
       <Link to={`/movies/${movie.id}`}>
         <Picture 
+          className="max-h-92"
           src={movie.backdropPath}
           alt={movie.title}
           sizes={wide ? 
