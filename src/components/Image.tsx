@@ -1,12 +1,19 @@
 type ImageProps = {
   src: string | null,
-  alt: string
+  alt: string,
+  size: string
 }
 
-export default function Image({ src, alt }: ImageProps) {
+export default function Image({ src, alt, size }: ImageProps) {
   return (
-    <div className="min-h-60 bg-light">
-      {src && <img className="w-full min-h-60" src={src} alt={alt} title={alt} />}
+    <div className="flex min-h-60 bg-light">
+      {src && 
+        <img 
+          className="w-full object-cover" 
+          src={src.replace('SIZE', size)} 
+          alt={alt} 
+          title={alt}
+        />}
     </div>
   )
 }
