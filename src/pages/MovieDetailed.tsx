@@ -50,6 +50,8 @@ export default function MovieDetailed() {
 
   return (
     <main className="min-h-screen bg-white">
+      <span className="absolute top-0 inset-x-0 block h-20 laptop:h-40 bg-gradient-to-b from-white to-transparent"></span>
+
       <GoBackNav title="Movie Details">
         {favorite && 
           <button className="flex items-center ml-auto" onClick={e => toggleFavorite(e, false)}>
