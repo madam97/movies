@@ -45,9 +45,8 @@ export default function MovieList({ displayType, movies, noDataText }: MovieList
           <div className={`
             grid 
             ${displayType === 'normal' ? 
-              `gap-x-3 laptop:gap-x-8
-              gap-y-3 laptop:gap-y-8
-              grid-cols-1 laptop:grid-cols-2` : 
+              `gap-3 tablet:gap-5 laptop:gap-8
+              grid-cols-1 tablet:grid-cols-2` : 
               `gap-x-1 tablet:gap-x-3 laptop:gap-x-5 desktop:gap-x-8
               gap-y-2 tablet:gap-y-3 laptop:gap-y-4 desktop:gap-y-5
               grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-6`
@@ -57,7 +56,7 @@ export default function MovieList({ displayType, movies, noDataText }: MovieList
             {displayType === 'normal' && movies.map((movie, index) => 
               <Movie 
                 key={movie.id} 
-                className={index == 0 ? 'laptop:col-span-2' : ''}
+                wide={index == 0}
                 movie={movie as IMovie}
               />)
             }
