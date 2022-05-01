@@ -4,13 +4,15 @@ import Image from './Image'
 import MovieCard from './MovieCard'
 
 type MovieProps = {
+  /** More classes for the root element */
+  className?: string,
   /** The movie data that will be displayed */
   movie: IMovie
 }
 
-export default function Movie({ movie }: MovieProps) {
+export default function Movie({ className = '', movie }: MovieProps) {
   return (
-    <article className="overflow-hidden rounded-lg">
+    <article className={`overflow-hidden rounded-lg ${className}`}>
       <Link to={`/movies/${movie.id}`}>
         <Image src={movie.backdropPath} alt={movie.title} />
       </Link>

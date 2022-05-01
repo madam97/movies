@@ -34,22 +34,46 @@ export default function MovieList({ displayType, movies, noDataText }: MovieList
       <Loader show={show} />
 
       <section className="px-4 pt-14 pb-6 bg-white">
-        <h1 className="mb-1.5 text-2xl text-dark font-extrabold">Hello Verycreatives</h1>
-        <p className="font-semibold">Check these movies out</p>
+        <div className="container">
+          <h1 className="mb-1.5 text-2xl text-dark font-extrabold">Hello Verycreatives</h1>
+          <p className="font-semibold">Check these movies out</p>
+        </div>
       </section>
 
       {movies && movies.length > 0 &&
-        <section className={`
-          grid gap-x-1 gap-y-2 ${displayType === 'normal' ? 'grid-cols-1' : 'grid-cols-2'} 
-          px-2 py-3
-        `}>
-          {displayType === 'normal' && movies.map(movie => <Movie key={movie.id} movie={movie as IMovie} />)}
-          {displayType === 'poster' && movies.map(movie => <MoviePoster key={movie.id} poster={movie as IMoviePoster} />)}
+        <section className="px-2 py-3">
+          <div className={`
+            grid 
+            ${displayType === 'normal' ? 
+              `gap-x-3 laptop:gap-x-8
+              gap-y-3 laptop:gap-y-8
+              grid-cols-1 laptop:grid-cols-2` : 
+              `gap-x-1 tablet:gap-x-3 laptop:gap-x-5 desktop:gap-x-8
+              gap-y-2 tablet:gap-y-3 laptop:gap-y-4 desktop:gap-y-5
+              grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-6`
+            } 
+            container 
+          `}>
+            {displayType === 'normal' && movies.map((movie, index) => 
+              <Movie 
+                key={movie.id} 
+                className={index == 0 ? 'laptop:col-span-2' : ''}
+                movie={movie as IMovie}
+              />)
+            }
+
+            {displayType === 'poster' && movies.map(movie => 
+              <MoviePoster 
+                key={movie.id} 
+                poster={movie as IMoviePoster}
+              />)
+            }
+          </div>
         </section>
       }
 
       {movies && movies.length == 0 &&
-        <div className="flex justify-center items-center grow">
+        <div className="flex justify-center items-center grow container">
           <p className="text-xl text-dark">{noDataText}</p>
         </div>
       }

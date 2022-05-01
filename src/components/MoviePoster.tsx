@@ -10,7 +10,7 @@ type MoviePosterProps = {
 
 export default function MoviePoster({ poster }: MoviePosterProps) {
   return (
-    <article className="overflow-hidden rounded-lg">
+    <article className="overflow-hidden flex flex-col rounded-lg">
       <Link to={`/movies/${poster.id}`}>
         <Image src={poster.posterPath} alt={poster.title} />
       </Link>

@@ -28,8 +28,10 @@ export default function HeaderContainer({ children }: HeaderContainerProps) {
   // --------------------------------------------
 
   return (
-    <header className={`z-30 fixed top-0 left-0 right-0 flex px-4 py-2 ${stucked ? 'bg-white' : ''} text-base text-dark`}>
-      {children}
+    <header className={`z-30 fixed top-0 left-0 right-0 px-4 ${stucked ? 'bg-white' : ''} text-base text-dark`}>
+      <nav className="flex container py-2">
+        {children}
+      </nav>
     </header>
   )
 }

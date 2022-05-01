@@ -77,7 +77,12 @@ export default function MovieDetailed() {
           <section>
             <Image src={movie.backdropPath} alt={movie.title} />
 
-            <div className="relative -mt-3 px-4 pt-6 pb-4.5 bg-white rounded-t-xl">
+            <div className="relative 
+              -mt-3 tablet:-mt-12 laptop:-mt-20 desktop:-mt-28 mx-auto 
+              px-4 pt-6 pb-4.5 
+              tablet:max-w-lg laptop:max-w-2xl desktop:max-w-3xl 
+              bg-white rounded-t-xl
+            ">
               <h1 className="text-2xl text-dark font-extrabold">
                 {movie.title}
                 {movie.originalTitle && movie.title !== movie.originalTitle ? ' ('+movie.originalTitle+')' : ''}

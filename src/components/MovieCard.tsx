@@ -11,7 +11,7 @@ type MovieCardProps = {
 
 export default function MovieCard({ movie }: MovieCardProps) {
   return (
-    <div className="p-3 border border-light rounded-b-lg">
+    <div className="flex flex-col justify-between grow p-3 border border-light rounded-b-lg">
       <p className="mb-5 text-dark font-semibold">{movie.title}</p>
 
       <div className="flex justify-between font-medium">
